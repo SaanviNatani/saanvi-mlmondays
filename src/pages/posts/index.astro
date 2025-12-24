@@ -1,0 +1,38 @@
+---
+import Layout from "../_layout.astro";
+import PostCard from "../../components/PostCard.astro";
+
+const posts = [
+  {
+    title: "Welcome to ML Mondays",
+    excerpt: "A short intro to ML Mondays and how to contribute.",
+    date: "2025-01-01",
+    slug: "example-post",
+  },
+  {
+    title: "Example 2",
+    excerpt: "Another post example to demo layout.",
+    date: "2025-02-05",
+    slug: "example-2",
+  },
+];
+---
+
+<Layout>
+  
+
+  <section class="site-container py-16">
+    <h2 class="text-2xl font-bold mb-6">All Posts</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {posts.map((p) => (
+        <PostCard
+          title={p.title}
+          excerpt={p.excerpt}
+          date={p.date}
+          slug={p.slug}
+        />
+      ))}
+    </div>
+  </section>
+</Layout>

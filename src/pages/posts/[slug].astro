@@ -1,0 +1,47 @@
+---
+import Layout from "../_layout.astro";
+import matter from "gray-matter";
+import fs from "fs";
+import path from "path";
+
+export async function getStaticPaths() {
+  const postsDir = path.resolve("src/content/posts");
+  const files = fs.readdirSync(postsDir);
+
+  return files.map((file) => ({
+    params: { slug: file.replace(".md", "") },
+    props: { filePath: path.join(postsDir, file) },
+  }));
+}
+
+const { filePath } = Astro.props;
+const { slug } = Astro.params;
+
+const file = fs.readFileSync(filePath, "utf-8");
+const { data, content } = matter(file);
+---
+
+<Layout title={data.title}>
+  <article class="prose prose-invert mx-auto py-16">
+    <h1>{data.title}</h1>
+
+    <p class="text-sm text-slate-400">{data.date}</p>
+
+    <p class="text-sm text-slate-400 mb-6">
+      👁️ <span id="view-count">0</span> views
+    </p>
+
+    <div innerHTML={content} />
+  </article>
+</Layout>
+
+<!-- ✅ CLIENT ONLY SCRIPT -->
+<script define:vars={{ slug }}>
+  const key = `views-${slug}`;
+
+  let views = Number(localStorage.getItem(key) || 0);
+  views += 1;
+
+  localStorage.setItem(key, views);
+  document.getElementById("view-count").textContent = views;
+</script>

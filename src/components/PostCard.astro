@@ -1,0 +1,16 @@
+---
+const { title, excerpt, date, slug } = Astro.props;
+
+if (!slug) {
+  throw new Error("PostCard missing slug");
+}
+---
+
+<a
+  href={`/posts/${slug}`}
+  class="block rounded-xl border border-slate-700 p-6 hover:border-violet-500 transition"
+>
+  <h3 class="text-xl font-semibold mb-2">{title}</h3>
+  <p class="text-slate-400 text-sm mb-2">{date}</p>
+  <p class="text-slate-300">{excerpt}</p>
+</a>

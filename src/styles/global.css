@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme variables */
+:root{
+  --accent: #6d28d9;
+  --bg: #0b0b0f;
+  --muted: #9aa6b2;
+}
+
+/* Base overrides */
+html,body,#root {
+  height: 100%;
+}
+body {
+  @apply bg-hive-900 text-slate-100 antialiased;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* glass container */
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+}
+
+/* small helpers */
+.btn-primary {
+  @apply inline-flex items-center gap-3 px-5 py-3 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-medium shadow-lg transform transition hover:scale-[1.01] focus:outline-none;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-800 text-slate-200 bg-transparent hover:bg-slate-800 transition;
+}
+
+/* Floating CTA circle */
+.floating-cta {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(109,40,217,0.22);
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+.floating-cta:hover { transform: translateY(-6px) scale(1.03); }
+
+/* animated card */
+.animated-card {
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: fadeInUp .5s ease both;
+}
+
+/* responsive container */
+.site-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* typographic niceties for markdown content */
+.prose-invert {
+  --tw-prose-body: #d1d5db;
+  --tw-prose-headings: #fff;
+  --tw-prose-lead: #9aa6b2;
+  --tw-prose-links: var(--accent);
+}

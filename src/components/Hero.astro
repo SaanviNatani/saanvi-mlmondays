@@ -1,0 +1,27 @@
+---
+const { title = 'ML Mondays', subtitle = 'Short, practical machine-learning articles — guides, explainers, and walkthroughs.' } = Astro.props;
+---
+<section class="site-container py-20">
+  <div class="grid lg:grid-cols-2 gap-8 items-center">
+    <div class="space-y-6">
+      <h1 class="text-6xl font-extrabold leading-tight">ML Mondays</h1>
+      <p class="text-lg text-slate-300 max-w-xl">{subtitle}</p>
+      <div class="flex gap-4 mt-6">
+        <a href="/posts" class="btn-primary">Explore posts</a>
+        <a href="/write-for-us" class="btn-ghost">Write for us</a>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div class="glass p-6 rounded-xl border border-slate-800">
+        <h3 class="font-semibold text-xl">Featured: Welcome to ML Mondays</h3>
+        <p class="text-slate-300 mt-2">A short intro to ML Mondays and how to contribute.</p>
+      </div>
+
+      <div class="glass p-6 rounded-xl border border-slate-800">
+        <h4 class="font-semibold">Community</h4>
+        <p class="text-slate-300 mt-2">Contribute short practical ML articles and tutorials.</p>
+      </div>
+    </div>
+  </div>
+</section>
